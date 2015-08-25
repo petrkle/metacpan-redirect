@@ -1,6 +1,14 @@
 var url = window.location.href
 
-var disturl = /^http:\/\/search\.cpan\.org\/~[^\/]*\/(.*)-([0-9\.]+)\/((.*)\.pm|)$/
+var disturlver = /^http:\/\/search\.cpan\.org\/~[^\/]*\/(.*)-([0-9\.]+)\/((.*)\.pm|)$/
+
+if(url.match(disturlver)){
+	var dist = url.replace(disturlver, '$1')
+	dist = dist.replace(/-/g, '::')
+	window.location='https://metacpan.org/pod/' + dist
+}
+
+var disturl = /^http:\/\/search\.cpan\.org\/dist\/(.*)$/
 
 if(url.match(disturl)){
 	var dist = url.replace(disturl, '$1')
